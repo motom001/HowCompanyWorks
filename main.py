@@ -14,7 +14,7 @@ from resources.trainee import *
 
 from logging import getLogger
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s]  \t[%(name)s] %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s [%(levelname)s]  \t[%(name)s] %(message)s')
 logger = getLogger(__name__)
 logger.debug("%s loaded", __name__)
 

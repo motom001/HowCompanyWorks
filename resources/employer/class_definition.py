@@ -22,6 +22,25 @@ class Employer(Employee):
         Employee.__init__(self, corridor)
         self.corridor.lights = 'on'
 
+    def start_working(self):
+        for i in range(self.max_trainee_budget + 1):
+            logger.info("hire new trainee was %s" % self.hire_new_trainee())
+        return len(self.corridor.trainees) is self.max_trainee_budget
+
+    def check_trainees(self):
+        sys_load = self.corridor.message_box.qsize()
+        trainees_size = len(self.corridor.trainees)
+        for i in range(self.max_trainee_budget - trainees_size):
+            self.hire_new_trainee()
+            return True
+        if sys_load + self.max_trainee_budget < 15:
+            self.fire_one_trainee()
+        elif sys_load > 20:
+            self.hire_new_trainee()
+
+        logger.info("sys_load is %s with %s trainees (base %s)" % (
+            sys_load, len(self.corridor.trainees), self.max_trainee_budget))
+
     def stop_working(self):
         self.corridor.lights = 'off'
         return self.fire_all_trainees()
