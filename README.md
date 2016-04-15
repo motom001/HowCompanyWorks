@@ -1,4 +1,4 @@
-# HowCompanyWorks
+# WorkLikeACompany
 eine (lustig gemeinte) Umsetzung eines Unternehmens in Python (Queue.PriorityQueue)
 
 nicht 100% vollständig, aber 100% lauffähig...
